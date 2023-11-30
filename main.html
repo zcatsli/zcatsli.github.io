@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/logo.png">
+    <title>少 年 游</title>
+</head>
+
+<body>
+	<h1>🌳书签导航页🌳</h1>
+	<hr></hr>
+	<h2><i>欲买桂花同载酒，终不似，少年游。</i></h2>
+	<main>
+		<div class="box">
+			<div id="row1">
+				<a href="https://rss.ssfox.tk/" target="_blank"><h3>RSS订阅</h3></a>
+				<a href="https://alist.lvesay.link/" target="_blank"><h3>Alist</h3></a>
+				<a href="https://memos.daohua.eu.org/" target="_blank"><h3>Memos</h3></a>
+				<a href="https://ssmao.eu.org/" target="_blank"><h3>Cloudreve</h3></a>
+			</div>
+			<div id="row2">
+				<a href="https://sexmao.tk/taohuajiu" target="_blank"><h3>1Panel_1</h3></a>
+				<a href="https://panel.mcat.tk/taohuajiu" target="_blank"><h3>1Panel_2</h3></a>
+				<a href="https://shlink.ssmao.cf/" target="_blank"><h3>Shlink</h3></a>
+				<a href="https://t.ssfox.tk/" target="_blank"><h3>TG图床</h3></a>
+			</div>
+			<div id="row3">
+				<a href="https://ssfox.tk/" target="_blank"><h3>ChatGPTNEXT</h3></a>
+				<a href="https://webgpt.ssfox.tk/" target="_blank"><h3>ChatGPTNEXT</h3></a>
+			</div>
+			<div id="row4">
+				<a href="https://chat.zuzuge.tk/" target="_blank"><h3>PandoraNEXT</h3></a>
+				<a href="https://icon.ssfox.tk/" target="_blank"><h3>Notion图标生成</h3></a>
+			</div>
+		</div>
+		<div class="box2">
+			<h2>网易云热评</h2>
+			<p>---</p>
+			<p id="apiContent">Loading...</p>
+		</div>
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				// 使用 Fetch API 获取 API 内容
+				fetch("https://api.tq23.cn/api/xd-comment?format=json")
+					.then(response => {
+						if (!response.ok) {
+							throw new Error(`HTTP error! Status: ${response.status}`);
+						}
+						return response.json(); // 解析 JSON
+					})
+					.then(data => {
+						// 提取需要的内容
+						const content = data.data.content;
+						const source = data.data.source;
+
+						// 更新页面上的文本
+						document.getElementById("apiContent").innerText = `热评: ${content}\n来自: ${source}`;
+					})
+					.catch(error => {
+						console.error("Error fetching API:", error);
+						document.getElementById("apiContent").innerText = `Error fetching API: ${error.message}`;
+					});
+			});										
+		</script>
+	</main>
+</body>
+	<footer>
+		<p>♥ 2023 - 若是简单</p>
+	</footer>
+</html>
